@@ -22,7 +22,7 @@ public class PdfView extends AbstractPdfView {
         List<User> users = (List<User>) model.get("users");
         document.add(new Paragraph("Generated Users " + LocalDate.now()));
 
-        PdfPTable table = new PdfPTable(users.stream().findAny().get().getColumnCount());
+        PdfPTable table = new PdfPTable(4);
         table.setWidthPercentage(100.0f);
         table.setSpacingBefore(10);
 
@@ -36,43 +36,28 @@ public class PdfView extends AbstractPdfView {
         cell.setPadding(5);
 
         // write table header
-        cell.setPhrase(new Phrase("First Name", font));
+        cell.setPhrase(new Phrase("Generation", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Last Name", font));
+        cell.setPhrase(new Phrase("Gender", font));
+        cell.setColspan(2);
+        cell.setRowspan(4);
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Age", font));
+        cell.setPhrase(new Phrase("Course", font));
+        cell.setRowspan(3);
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Job Title", font));
+        cell.setPhrase(new Phrase("No of Student", font));
+        cell.setColspan(2);
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Company", font));
-        table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Address", font));
-        table.addCell(cell);
-
-        cell.setPhrase(new Phrase("City", font));
-        table.addCell(cell);
-
-        cell.setPhrase(new Phrase("Country", font));
-        table.addCell(cell);
-
-        cell.setPhrase(new Phrase("Phone Number", font));
-        table.addCell(cell);
 
         for(User user : users){
             table.addCell(user.getFirstName());
             table.addCell(user.getLastName());
-            table.addCell(user.getAge().toString());
-            table.addCell(user.getJobTitle());
-            table.addCell(user.getCompany());
-            table.addCell(user.getAddress());
-            table.addCell(user.getCity());
-            table.addCell(user.getCountry());
-            table.addCell(user.getPhoneNumber());
+
 
         }
 

@@ -36,8 +36,9 @@ public abstract class AbstractPdfView extends AbstractView {
         // Apply preferences and build metadata.
         Document document = new Document(PageSize.A4.rotate(), 36, 36, 54, 36);
         PdfWriter writer = PdfWriter.getInstance(document, baos);
-        prepareWriter(model, writer, request);
+        //prepareWriter(model, writer, request);
         buildPdfMetadata(model, document, request);
+
 
         // Build PDF document.
         document.open();
@@ -47,6 +48,7 @@ public abstract class AbstractPdfView extends AbstractView {
         // Flush to HTTP response.
         writeToResponse(response, baos);
     }
+
 
     /**
      * Prepare the given PdfWriter. Called before building the PDF document,
@@ -85,6 +87,7 @@ public abstract class AbstractPdfView extends AbstractView {
      * @param document the iText document being populated
      * @param request in case we need locale etc. Shouldn't look at attributes.
      */
+
     protected void buildPdfMetadata(Map<String, Object> model, Document document, HttpServletRequest request) {
     }
 

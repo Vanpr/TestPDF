@@ -22,5 +22,10 @@ public class ExportController {
         return "";
     }
 
+    @GetMapping("/me")
+    public String show(Model model) {
+        return "index";
+    }
+
 
 }

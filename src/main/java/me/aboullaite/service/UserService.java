@@ -13,7 +13,6 @@ import java.util.stream.IntStream;
 public class UserService {
 
     private final String candidateChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
     private final String candidateNum = "0123456789";
 
     @Autowired
@@ -30,6 +29,7 @@ public class UserService {
                         appUtil.generateRandomChars(candidateChars, 10), appUtil.generateRandomChars(candidateChars,
                         10), appUtil.generateRandomChars(candidateNum, 10)))
                 .collect(Collectors.toList());
+
 
     }
 }
